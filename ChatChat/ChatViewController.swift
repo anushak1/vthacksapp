@@ -177,7 +177,7 @@ import Photos
         
         private func setupIncomingBubble() -> JSQMessagesBubbleImage {
             let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-            return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+            return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
         }
     private lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
     private var newMessageRefHandle: FIRDatabaseHandle?
