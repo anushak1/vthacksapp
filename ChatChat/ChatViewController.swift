@@ -21,15 +21,24 @@
 */
 
 import UIKit
+import Firebase
+import JSQMessagesViewController
 
-final class ChatViewController: UIViewController {
+final class ChatViewController: JSQMessagesViewController {
   
-  // MARK: Properties
+    var channelRef: FIRDatabaseReference?
+    var channel: Channel? {
+        didSet {
+            title = channel?.name
+        }
+    }
   
   // MARK: View Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.senderId = FIRAuth.auth()?.currentUser?.uid
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +52,9 @@ final class ChatViewController: UIViewController {
   
   
   // MARK: UI and User Interaction
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        <#code#>
+    }
 
   
   // MARK: UITextViewDelegate methods
