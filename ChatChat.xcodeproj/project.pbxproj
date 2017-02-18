@@ -21,6 +21,7 @@
 		BB5355811BEF765800321277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB5355801BEF765800321277 /* Assets.xcassets */; };
 		BB5355841BEF765800321277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5355821BEF765800321277 /* LaunchScreen.storyboard */; };
 		BB53558F1BEF7E9700321277 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB53558E1BEF7E9700321277 /* ChatViewController.swift */; };
+		EA294C9C1E58D82400D68AC9 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA294C9B1E58D82400D68AC9 /* CreateUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		BB53558E1BEF7E9700321277 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E8DDF38A1BEF88DC00B5F45A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		E8DDF38C1BEF88E200B5F45A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		EA294C9B1E58D82400D68AC9 /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				BB53557B1BEF765800321277 /* LoginViewController.swift */,
 				45A0D8F91D49419500F26729 /* ChannelListViewController.swift */,
 				BB53558E1BEF7E9700321277 /* ChatViewController.swift */,
+				EA294C9B1E58D82400D68AC9 /* CreateUserViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				459780D31D6465FB007BE66F /* UIImage+Gif.swift in Sources */,
 				BB53558F1BEF7E9700321277 /* ChatViewController.swift in Sources */,
 				45A0D8FA1D49419500F26729 /* ChannelListViewController.swift in Sources */,
+				EA294C9C1E58D82400D68AC9 /* CreateUserViewController.swift in Sources */,
 				BB53557A1BEF765800321277 /* AppDelegate.swift in Sources */,
 				45A0D8FE1D49508800F26729 /* CreateChannelCell.swift in Sources */,
 			);
