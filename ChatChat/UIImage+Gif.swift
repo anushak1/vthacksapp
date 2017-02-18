@@ -73,7 +73,7 @@ extension UIImage {
             to: AnyObject.self)
         if delayObject.doubleValue == 0 {
             delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()),
+                Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()), to: AnyObject.self)
         }
 
         delay = delayObject as! Double
@@ -89,6 +89,7 @@ extension UIImage {
         var a = a
         var b = b
         // Check if one of them is nil
+        
         if b == nil || a == nil {
             if b != nil {
                 return b!
@@ -100,7 +101,7 @@ extension UIImage {
         }
 
         // Swap for modulo
-        if a < b {
+        if a! < b! {
             let c = a
             a = b
             b = c
