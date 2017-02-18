@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="1046" y="388"/>
         </scene>
-        <!--View Controller-->
+        <!--Create User View Controller-->
         <scene sceneID="Twv-wf-yJ1">
             <objects>
-                <viewController id="HZR-eL-id9" sceneMemberID="viewController">
+                <viewController id="HZR-eL-id9" customClass="CreateUserViewController" customModule="ChatChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ljc-Dk-yMS"/>
                         <viewControllerLayoutGuide type="bottom" id="k3g-gF-spW"/>
@@ -356,6 +356,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="rhH-39-8K3" secondAttribute="trailing" constant="5" id="xhH-Pj-WdN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="capitalOnePassword" destination="p2A-9J-3Ee" id="C8v-Dv-bIi"/>
+                        <outlet property="capitalOneUsername" destination="sK8-gI-a0A" id="uwv-TW-iBU"/>
+                        <outlet property="email" destination="UmP-S7-OXB" id="cXr-s3-OEP"/>
+                        <outlet property="password" destination="lwd-Np-vXA" id="iFU-3c-k4l"/>
+                        <outlet property="phoneNumber" destination="YeC-ep-8tU" id="loo-84-Ujg"/>
+                        <outlet property="username" destination="u0y-0h-155" id="f44-3T-rVo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUy-3B-1VH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
