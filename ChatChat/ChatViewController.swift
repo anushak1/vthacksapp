@@ -172,7 +172,7 @@ import Photos
         lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
         private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
             let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-            return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+            return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleRed())
         }
         
         private func setupIncomingBubble() -> JSQMessagesBubbleImage {
