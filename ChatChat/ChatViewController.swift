@@ -25,6 +25,8 @@ import Firebase
 import JSQMessagesViewController
 import Photos
     final class ChatViewController: JSQMessagesViewController {
+        let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(red: 0.07, green: 0.44, blue: 0.62, alpha: 1.0))
+        let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(red: 0.87, green: 0.87, blue: 0.90, alpha: 1.0))
         deinit {
             if let refHandle = newMessageRefHandle {
                 messageRef.removeObserver(withHandle: refHandle)
@@ -238,15 +240,18 @@ let message = messages[indexPath.item]
                 let alert = UIAlertController(title: "",
                                       message: "",
                                       preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Very Important", style: .default, handler: { (action) -> Void in
-            print("ACTION 1 selected!")
+        let action1 = UIAlertAction(  title: "Very Important", style: .default, handler: { (action) -> Void in
+            
+            print("ACTION 1 selected!");
             let itemRef = self.messageRef.childByAutoId() // 1
             let messageItem = [ // 2
                 "senderId": senderId!,
                 "senderName": senderDisplayName!,
                 "text": text!,
                 ]
-             itemRef.setValue(messageItem) // 3
+            
+                 
+                      itemRef.setValue(messageItem) // 3
            
           
             })
@@ -261,6 +266,11 @@ let message = messages[indexPath.item]
                 
                 ]
  itemRef.setValue(messageItem) // 3
+            if #available(iOS 10.0, *) {
+                _ = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
+            } else {
+                // Fallback on earlier versions
+            }
         })
         
         let action3 = UIAlertAction(title: "Not Important", style: .default, handler: { (action) -> Void in
