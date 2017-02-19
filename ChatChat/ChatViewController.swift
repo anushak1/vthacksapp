@@ -24,6 +24,7 @@ import UIKit
 import Firebase
 import JSQMessagesViewController
 import Photos
+
     final class ChatViewController: JSQMessagesViewController {
         let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(red: 0.07, green: 0.44, blue: 0.62, alpha: 1.0))
         let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(red: 0.87, green: 0.87, blue: 0.90, alpha: 1.0))
@@ -235,12 +236,45 @@ let message = messages[indexPath.item]
     collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
   }
+        func donation(amount: Double) {
+            
+            let headers = [
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                ]
+            let parameters = [
+                "medium": "balance",
+                "payee_id": "58a923601756fc834d90560c",
+                "amount": amount,
+                "transaction_date": "2017-02-18",
+                "description": "Not responding to chat"
+                ] as [String : Any]
+            
+            let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+            
+            let request = NSMutableURLRequest(url: NSURL(string: "http://api.reimaginebanking.com/accounts/58a922291756fc834d905607/transfers?key=5d7e2fc2c5d804c52dbb3566ea836dfc")! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            request.httpMethod = "POST"
+            request.allHTTPHeaderFields = headers
+            request.httpBody = postData as Data
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if (error != nil) {
+                    print(error ?? "error")
+                } else {
+                    print(String(data: data!, encoding: String.Encoding.utf8) ?? "bad data")
+                }
+            })
+            dataTask.resume()
+        }
   
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
                 let alert = UIAlertController(title: "",
                                       message: "",
                                       preferredStyle: .alert)
-        let action1 = UIAlertAction(  title: "Very Important", style: .default, handler: { (action) -> Void in
+       let action1 = UIAlertAction(  title: "Very Important", style: .default, handler: { (action) -> Void in
             
             print("ACTION 1 selected!");
             let itemRef = self.messageRef.childByAutoId() // 1
@@ -250,13 +284,12 @@ let message = messages[indexPath.item]
                 "text": text!,
                 ]
             
-                 
-                      itemRef.setValue(messageItem) // 3
-           
-          
-            })
+            self.donation(amount: 0.01)
+            itemRef.setValue(messageItem) // 3
+        })
         
-        let action2 = UIAlertAction(title: "Important", style: .default, handler: { (action) -> Void in
+        
+        let action2 = UIAlertAction( title: "Important", style: .default, handler: { (action)-> Void in
             print("ACTION 2 selected!")
             let itemRef = self.messageRef.childByAutoId() // 1
             let messageItem = [ // 2
@@ -372,7 +405,7 @@ let message = messages[indexPath.item]
   
   
   //      <#code#>
-   }
+}
 // MARK: Image Picker Delegate
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
@@ -439,5 +472,3 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
 
   
   // MARK: UITextViewDelegate methods
-  
-
