@@ -26,8 +26,8 @@ import JSQMessagesViewController
 import Photos
 
     final class ChatViewController: JSQMessagesViewController {
-        var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(red: 0.07, green: 0.44, blue: 0.62, alpha: 1.0))
-        var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(red: 0.87, green: 0.87, blue: 0.90, alpha: 1.0))
+        let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(red: 0.07, green: 0.44, blue: 0.62, alpha: 1.0))
+        let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(red: 0.87, green: 0.87, blue: 0.90, alpha: 1.0))
         deinit {
             if let refHandle = newMessageRefHandle {
                 messageRef.removeObserver(withHandle: refHandle)
@@ -274,7 +274,7 @@ let message = messages[indexPath.item]
                 let alert = UIAlertController(title: "",
                                       message: "",
                                       preferredStyle: .alert)
-       // let action1 = UIAlertAction(  with: UIColor(red:0.68, green:1.00, blue:0.00, alpha:1.0),title: "Very Important", style: .default, handler: { (action) -> Void in
+       let action1 = UIAlertAction(  title: "Very Important", style: .default, handler: { (action) -> Void in
             
             print("ACTION 1 selected!");
             let itemRef = self.messageRef.childByAutoId() // 1
@@ -284,15 +284,12 @@ let message = messages[indexPath.item]
                 "text": text!,
                 ]
             
-        donation(amount: 0.01)
-       
-                      itemRef.setValue(messageItem) // 3
-           
-          
-            }
+            self.donation(amount: 0.01)
+            itemRef.setValue(messageItem) // 3
+        })
         
         
-        let action2 = UIAlertAction(title: "Important", style: .default, handler: { (action) -> Void in
+        let action2 = UIAlertAction( title: "Important", style: .default, handler: { (action)-> Void in
             print("ACTION 2 selected!")
             let itemRef = self.messageRef.childByAutoId() // 1
             let messageItem = [ // 2
@@ -408,7 +405,7 @@ let message = messages[indexPath.item]
   
   
   //      <#code#>
-   }
+}
 // MARK: Image Picker Delegate
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
@@ -475,5 +472,3 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
 
   
   // MARK: UITextViewDelegate methods
-  
-
