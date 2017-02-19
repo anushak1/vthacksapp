@@ -247,7 +247,7 @@ let message = messages[indexPath.item]
                 "medium": "balance",
                 "payee_id": "58a923601756fc834d90560c",
                 "amount": amount,
-                "transaction_date": "2017-02-18",
+                "transaction_date": "2017-02-19",
                 "description": "Not responding to chat"
                 ] as [String : Any]
             
