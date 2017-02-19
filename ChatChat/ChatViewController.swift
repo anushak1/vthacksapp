@@ -285,7 +285,7 @@ let message = messages[indexPath.item]
                 "text": text!,
                 ]
             
-            self.donation(amount: 0.01)
+            self.donation(amount: 10.0)
             itemRef.setValue(messageItem) // 3
         })
         
