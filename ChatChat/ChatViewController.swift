@@ -23,6 +23,7 @@
 import UIKit
 import Firebase
 import JSQMessagesViewController
+
 import Photos
     final class ChatViewController: JSQMessagesViewController {
         let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(red: 0.07, green: 0.44, blue: 0.62, alpha: 1.0))
