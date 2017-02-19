@@ -241,6 +241,9 @@ let message = messages[indexPath.item]
             "senderName": senderDisplayName!,
             "text": text!,
             ]
+        let alert = UIAlertController(title: "Choose a priority", message: "Options:", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Send Message", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         
         itemRef.setValue(messageItem) // 3
         
