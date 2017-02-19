@@ -235,72 +235,17 @@ let message = messages[indexPath.item]
   }
   
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-                let alert = UIAlertController(title: "",
-                                      message: "",
-                                      preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Very Important", style: .default, handler: { (action) -> Void in
-            print("ACTION 1 selected!")
-            let itemRef = self.messageRef.childByAutoId() // 1
-            let messageItem = [ // 2
-                "senderId": senderId!,
-                "senderName": senderDisplayName!,
-                "text": text!,
-                ]
-             itemRef.setValue(messageItem) // 3
-           
-          
-            })
+        let itemRef = messageRef.childByAutoId() // 1
+        let messageItem = [ // 2
+            "senderId": senderId!,
+            "senderName": senderDisplayName!,
+            "text": text!,
+            ]
+        let alert = UIAlertController(title: "Choose a priority", message: "Options:", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Send Message", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         
-        let action2 = UIAlertAction(title: "Important", style: .default, handler: { (action) -> Void in
-            print("ACTION 2 selected!")
-            let itemRef = self.messageRef.childByAutoId() // 1
-            let messageItem = [ // 2
-                "senderId": senderId!,
-                "senderName": senderDisplayName!,
-                "text": text!,
-                
-                ]
- itemRef.setValue(messageItem) // 3
-        })
-        
-        let action3 = UIAlertAction(title: "Not Important", style: .default, handler: { (action) -> Void in
-            print("ACTION 3 selected!")
-            let itemRef = self.messageRef.childByAutoId() // 1
-            let messageItem = [ // 2
-                "senderId": senderId!,
-                "senderName": senderDisplayName!,
-                "text": text!,
-                ]
- itemRef.setValue(messageItem) // 3
-        })
-        // Cancel button
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
-        // Change font of the title and message
-        let titleFont:[String : AnyObject] = [ NSFontAttributeName : UIFont(name: "AmericanTypewriter", size: 18)! ]
-        let messageFont:[String : AnyObject] = [ NSFontAttributeName : UIFont(name: "HelveticaNeue-Thin", size: 14)! ]
-        let attributedTitle = NSMutableAttributedString(string: "Priority Options", attributes: titleFont)
-        let attributedMessage = NSMutableAttributedString(string: "This message is: ", attributes: messageFont)
-        alert.setValue(attributedTitle, forKey: "attributedTitle")
-        alert.setValue(attributedMessage, forKey: "attributedMessage")
-        
-        // Restyle the view of the Alert
-        alert.view.tintColor = UIColor.brown  // change text color of the buttons
-        alert.view.backgroundColor = UIColor.cyan  // change background color
-        alert.view.layer.cornerRadius = 25   // change corner radius
-        
-        // Add action buttons and present the Alert
-        alert.addAction(action1)
-        alert.addAction(action2)
-        alert.addAction(action3)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-        
-        
-       // let alert = UIAlertController(title: "Choose a priority", message: "Options:", preferredStyle: .alert)
-       // alert.addAction(UIAlertAction(title: "Send Message", style:, handler: nil))
-        //self.present(alert, animated: true, completion: nil)
-        
-       
+        itemRef.setValue(messageItem) // 3
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
         
